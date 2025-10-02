@@ -6,7 +6,7 @@ void RawDynamicCharacterArray::push(const char characterToPush)
 	{
 		rawPtrToDynamicCharList = new char[capacity * 2]; //greedy to ask for double the space (not conservative)
 
-		// more to come here .. 
+		//copy the contents of the "old" array: 
 	}
 
 	else //we've still got space remaining (size < capacity)
