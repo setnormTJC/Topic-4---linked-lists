@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Introducing dynamic memory allocation and a custom vector class", "Introducing dynamic memory allocation and a custom vector class\Introducing dynamic memory allocation and a custom vector class.vcxproj", "{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Debug|x64.ActiveCfg = Debug|x64
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Debug|x64.Build.0 = Debug|x64
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Debug|x86.ActiveCfg = Debug|Win32
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Debug|x86.Build.0 = Debug|Win32
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Release|x64.ActiveCfg = Release|x64
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Release|x64.Build.0 = Release|x64
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Release|x86.ActiveCfg = Release|Win32
+		{3FF6FB49-AED8-4710-9026-1050EB7C2EF1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CF4276A-C016-438F-86DB-85BED120B1AE}
+	EndGlobalSection
+EndGlobal
