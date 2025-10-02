@@ -11,9 +11,9 @@ public:
 class RawDynamicCharacterArray : public DynamicCharacterArrayADT
 {
 private:
-	int capacity = 5; //how many characters our dynamic array can hold
-	char* rawPtrToDynamicCharList = new char[capacity]; 
-	int size = 0; //how many characters our dynamic array is CURRENTLY holding 
+	int max_capacity = 5; //how many characters our dynamic array can hold
+	char* rawPtrToDynamicCharList = new char[max_capacity]; 
+	int current_size = 0; //how many characters our dynamic array is CURRENTLY holding 
 
 
 public: 

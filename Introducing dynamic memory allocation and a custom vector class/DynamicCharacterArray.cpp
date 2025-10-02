@@ -2,9 +2,9 @@
 
 void RawDynamicCharacterArray::push(const char characterToPush)
 {
-	if (size == capacity)
+	if (size == max_capacity)
 	{
-		rawPtrToDynamicCharList = new char[capacity * 2]; //greedy to ask for double the space (not conservative)
+		rawPtrToDynamicCharList = new char[max_capacity * 2]; //greedy to ask for double the space (not conservative)
 
 		//copy the contents of the "old" array: 
 	}
