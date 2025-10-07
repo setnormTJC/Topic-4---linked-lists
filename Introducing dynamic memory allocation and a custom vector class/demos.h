@@ -1,7 +1,19 @@
 #pragma once
 #include <iostream>
 
+#include<memory> 
+
 #include "DynamicCharacterArray.h"
+
+void demoSmartPointerNOMemoryLeak()
+{
+	while (true)
+	{
+		std::unique_ptr<int> ptr = std::make_unique<int>(1); 
+	}
+
+}
+
 
 void simplePointerAndDynamicMemoryDemo()
 {
@@ -27,6 +39,9 @@ void simplePointerAndDynamicMemoryDemo()
 		ptrToArray[i] = i * 2;
 	}
 	//look at these in MEMORY (no printing) 
+	std::cout << "Did it work\n";
+
+
 }
 
 /*Use with CAUTION!*/
@@ -34,10 +49,14 @@ void demoRawPointerMemoryLeak()
 {
 	while (true)
 	{
-		int* ptrToInt = new int; 
-		//delete ptrToInt; //uncomment to prevent memory leak!
+		int* ptrToInt = new int; //"naked" new 
+		delete ptrToInt; //uncomment to prevent memory leak!
+
+		//delete "deallocates" memory (it gives it back to the OS)
 	}
 }
+
+
 
 void demoSimpleDynamicCharacterArray()
 {
@@ -51,6 +70,8 @@ void demoSimpleDynamicCharacterArray()
 
 	theArray.push('f'); //exceeds current capacity! reallocate!
 
+
+	theArray.push('z'); 
 }
 
 /*If `RawDynamicCharacterArray` has no DESTRUCTOR that calls `delete`, this function "leaks"!*/
@@ -60,5 +81,14 @@ void demoMemoryLeakWithRawDynamicCharArray()
 	{
 		RawDynamicCharacterArray aDynamicCharacterArray;
 		//NOTE: this object will get DESTROYED when the close brace is hit (it goes out of scope)
+	}
+}
+
+void demoNOMemoryLeakWithSmartDynamicCharArray()
+{
+	while (true)
+	{
+		SmartDynamicCharacterArray aSmartDynamicCharacterArray; 
+		//no call to delete (in a custom destructor)? No problem!
 	}
 }

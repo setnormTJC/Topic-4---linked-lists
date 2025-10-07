@@ -5,6 +5,9 @@ class DynamicCharacterArrayADT
 {
 public: 
 	virtual void push(const char characterToPush) = 0;
+
+	/*Base class NEEDS a virtual destructor  - lest we have a memory leak in certain (polymorphism) situations!*/
+	virtual ~DynamicCharacterArrayADT() = default; 
 };
 
 /*"Raw" means "naked/raw" pointers are used in the implementation*/
@@ -28,14 +31,15 @@ public:
 	~RawDynamicCharacterArray(); 
 };
 
+
 /*"Smart" means "smart pointers" are used -> no memory leaks*/
 class SmartDynamicCharacterArray : public DynamicCharacterArrayADT
 {
 private: 
 	int max_capacity = 5;
 	int current_size = 0; 
-	std::unique_ptr<char[]> smartPtrToDynamicCharList = std::make_unique<char[]>(max_capacity); //requires <memory> 
-	//NOTE the "funny" syntax for the template param -> char[]
+	std::unique_ptr<char[]> smartPtrToDynamicCharList = std::make_unique<char[]>(max_capacity); 
+	//requires <memory> 
 
 public: 
 	SmartDynamicCharacterArray() = default; 
