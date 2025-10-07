@@ -26,7 +26,7 @@ int main()
     
     //RawNode tail; 
 
-    //head.addressOfNextNode = &tail; 
+    //head.addressOfNextNode = &tail; //Note the "address of" operator (unary &)
 
     /*Another way to make a linked list of 2 nodes*/
     RawNode* pHead  = new RawNode;

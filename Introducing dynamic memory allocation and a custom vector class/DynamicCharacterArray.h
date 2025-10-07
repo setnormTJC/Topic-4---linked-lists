@@ -31,7 +31,6 @@ public:
 	~RawDynamicCharacterArray(); 
 };
 
-
 /*"Smart" means "smart pointers" are used -> no memory leaks*/
 class SmartDynamicCharacterArray : public DynamicCharacterArrayADT
 {

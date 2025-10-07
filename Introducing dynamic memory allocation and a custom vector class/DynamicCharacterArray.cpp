@@ -6,44 +6,39 @@ void RawDynamicCharacterArray::push(const char characterToPush)
 {
 	if (current_size == max_capacity)
 	{
-		//rawPtrToDynamicCharList = new char[max_capacity * 2]; //greedy to ask for double the space (not conservative)
-		//any problems with the line above??
+		const int SCALING_FACTOR = 2; //double the amount of accessible memory (greedy)
 
-		char* ptrToLargerChunkOfMemory = new char[max_capacity * 2]; //* 2 is arbitrary (but maybe pretty greedy)
-
-		//char* ptrToLargerChunkOfMemory = new char[max_capacity + 1]; //very "conservative" 
+		//rawPtrToDynamicCharList = new char[max_capacity * 2]; //NO! You will "lose" your old data!
+		char* ptrToLargerChunkOfMemory = new char[max_capacity * SCALING_FACTOR]; 
+		//char* ptrToLargerChunkOfMemory = new char[max_capacity + 1]; //Very conservative
 
 		//copy the contents of the "old" array:
-		// 
 		for (int i = 0; i < max_capacity; ++i)
 		{
 			ptrToLargerChunkOfMemory[i] = rawPtrToDynamicCharList[i];
 		}
 
 		//delete (deallocate) the old "chunk" of memory (lest a memory leak)
-		delete rawPtrToDynamicCharList;
+		delete [] rawPtrToDynamicCharList; //fixed this after lecture!
 
-		//assign memory value the same address as the new chunk: 
+		//assign member variable (which "lives" beyond this function) the same address as the new chunk: 
 		rawPtrToDynamicCharList = ptrToLargerChunkOfMemory; 
 
-		//update max_capacity!
-		max_capacity *= 2;
+		//update max_capacity
+		max_capacity *= SCALING_FACTOR;
 	}
 
+	//finally, put the new value in place and update the size member variable: 
 	rawPtrToDynamicCharList[current_size] = characterToPush;
-
 	current_size++; 
 	
 }
 
-//Uncomment the funky def. below to prevent memory leak
 RawDynamicCharacterArray::~RawDynamicCharacterArray()
 {
 	delete[] rawPtrToDynamicCharList;
 	std::cout << "Destructor of RawDynamicCharacterArray called\n";
 }
-
-
 
 
 //This pragma region thing is an optional (and NON-PORTABLE) "goody" used for "code folding"
@@ -76,4 +71,6 @@ void SmartDynamicCharacterArray::push(const char characterToPush)
 	smartPtrToDynamicCharList.operator[](current_size) = characterToPush;
 	current_size++; 
 }
+
+/*Note that no custom destructor is needed! No memory leaks with smart pointer (std::unique_ptr)*/
 #pragma endregion 
