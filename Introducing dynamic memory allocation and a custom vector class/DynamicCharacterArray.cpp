@@ -1,8 +1,9 @@
 #include "DynamicCharacterArray.h"
+#include <iostream>
 
 void RawDynamicCharacterArray::push(const char characterToPush)
 {
-	if (size == max_capacity)
+	if (current_size == max_capacity)
 	{
 		rawPtrToDynamicCharList = new char[max_capacity * 2]; //greedy to ask for double the space (not conservative)
 
@@ -11,8 +12,33 @@ void RawDynamicCharacterArray::push(const char characterToPush)
 
 	else //we've still got space remaining (size < capacity)
 	{
-		rawPtrToDynamicCharList[size] = characterToPush;
+		rawPtrToDynamicCharList[current_size] = characterToPush;
 
-		size++; 
+		current_size++; 
 	}
 }
+
+RawDynamicCharacterArray::~RawDynamicCharacterArray()
+{
+	delete[] rawPtrToDynamicCharList;
+	std::cout << "Destructor of RawDynamicCharacterArray called\n";
+}
+
+
+
+/*******************************************BEGIN the "smart" section:*************************/
+void SmartDynamicCharacterArray::push(const char characterToPush)
+{
+	if (current_size == max_capacity)
+	{
+		//reallocate - smart pointer will clean up after itself
+		
+		//fill me in!
+	}
+
+	else
+	{
+		smartPtrToDynamicCharList
+	}
+}
+

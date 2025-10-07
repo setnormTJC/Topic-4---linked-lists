@@ -15,19 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Introducing dynamic memory allocation.cpp">
+    <ClCompile Include="Playing with std-list%27s merge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicCharacterArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DynamicCharacterArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="demos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

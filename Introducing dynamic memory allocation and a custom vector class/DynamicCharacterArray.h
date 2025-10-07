@@ -1,5 +1,5 @@
 #pragma once
-#include <memory>
+#include <memory> //for "smart" pointers (called std::unique_ptr)
 
 class DynamicCharacterArrayADT
 {
@@ -19,12 +19,25 @@ private:
 public: 
 	RawDynamicCharacterArray() = default; 
 
+	/*pushes at the BACK*/
 	void push(const char characterToPush);
+
+	/*If using raw (AKA: "naked") pointers, you should define a custom destructor function
+	* This relates to something called the "Rule of 5" in C++
+	*/
+	~RawDynamicCharacterArray(); 
 };
 
 /*"Smart" means "smart pointers" are used -> no memory leaks*/
 class SmartDynamicCharacterArray : public DynamicCharacterArrayADT
 {
-	std::unique_ptr<char> smartPtrToDynamicCharList = nullptr; //requires <memory> 
+private: 
+	int max_capacity = 5;
+	int current_size = 0; 
+	std::unique_ptr<char[]> smartPtrToDynamicCharList = std::make_unique<char[]>(max_capacity); //requires <memory> 
+	//NOTE the "funny" syntax for the template param -> char[]
 
+public: 
+	SmartDynamicCharacterArray() = default; 
+	void push(const char characterToPush);
 };
