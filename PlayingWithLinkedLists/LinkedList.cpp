@@ -50,13 +50,21 @@ void LeakyLinkedList::traverse()
 	//{
 	//	std::cout << pHead[i]... (note that this won't work)
 	//}
-	Node* pCurrent = pHead; //ex: 0x1122
+	Node* pCurrent = pHead; //just copying a memory address here 
 	while (pCurrent != nullptr)
 	{
 		std::cout << pCurrent->info << "\n";
 		pCurrent = pCurrent->pNext; 
 	}
 
+	//Q: Why not this way??
+	//while (pHead != nullptr)
+	//{
+	//	std::cout << pHead->info << "\n";
+	//	pHead = pHead->pNext;
+	//}
+	//A: You "lose your head" this way
+	//Keep your head while all about you are losing theirs. 
 }
 
 Node::Node(const std::string& info, Node* pNext)
