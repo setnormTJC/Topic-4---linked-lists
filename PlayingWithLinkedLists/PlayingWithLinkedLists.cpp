@@ -47,11 +47,15 @@ int main()
 
     LeakyLinkedList list("Alice");
 
-    list.pushBack("Bob"); 
+    //list.pushBack("Bob"); 
 
-    list.pushBack("Carol");
+    //list.pushBack("Carol");
 
-    list.pushBack("Darth");
+    //list.pushBack("Darth");
+
+    list.pushFront("Bob"); 
+    list.pushFront("Carol");
+    list.pushFront("Darth");
 
     list.traverse(); 
 

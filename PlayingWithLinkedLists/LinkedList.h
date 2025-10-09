@@ -13,8 +13,8 @@ class LinkedListADT
 /*Raw-pointer based; info in Node will be STRINGS (convenient)*/
 struct Node
 {
-	std::string info; //in Debug x86 mode, 24 bytes
-	Node* pNext; //pointer to (address of) next node in list 
+	std::string info{}; 
+	Node* pNext{}; //pointer to (address of) next node in list 
 
 	Node() = default; 
 	Node(const std::string& info, Node* pNext);
@@ -43,6 +43,7 @@ public:
 
 
 	void pushBack(const std::string& valueToInsertAtBack);
+	void pushFront(const std::string& valueToInsertAtFront);
 
 	/*"visits" every node in the list from head to tail*/
 	void traverse(); 

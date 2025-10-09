@@ -27,10 +27,20 @@ void LeakyLinkedList::pushBack(const std::string& valueToInsertAtBack)
 		pCurrent = pCurrent->pNext; 
 	}
 
-	pCurrent = pNew; 
+	pCurrent = pNew; //... peters out 
 
 	//NOPE! This ain't it!
 
+}
+
+void LeakyLinkedList::pushFront(const std::string& valueToInsertAtFront)
+{
+	Node* pNew = new Node(valueToInsertAtFront, nullptr);
+
+	pNew->pNext = pHead; 
+	pHead = pNew;
+
+	//what happens if you SWAP the order of the two lines above??
 }
 
 void LeakyLinkedList::traverse()
