@@ -8,7 +8,7 @@
 class LinkedListADT
 {
 	/*O(1) complexity*/
-	virtual void insertAfter(const std::string& newValue, const std::string& valueToInsertAfter) = 0;
+	virtual void insertAfter(const std::string& newValue, const std::string& infoInPreviousNode) = 0;
 };
 
 /*Raw-pointer based; info in Node will be STRINGS (convenient)*/
@@ -39,15 +39,25 @@ private:
 	//int numberOfNodesInList; //4 bytes of unnecessary space 
 public: 
 	LeakyLinkedList() = default; 
-	LeakyLinkedList(const std::string valueInitiallyInTheHeadNode);
+	LeakyLinkedList(const std::string infoInitiallyInTheHeadNode);
 
 	/*O(1) AKA: constant complexity (sort of!)*/
-	void insertAfter(const std::string& newValue, const std::string& valueToInsertAfter);
+	void insertAfter(const std::string& newInfo, const std::string& infoInPreviousNode);
 
-	void pushFront(const std::string& valueToInsertAtFront);
+	/*This one gets a bit complicated.
+	NOTE: Does NOT handle duplicates (ex: if "alpha" appears in the list more than once)*/
+	void removeNode(const std::string& infoToRemove);
+
+	void pushFront(const std::string& infoToInsertAtFront);
 
 	/*"visits" every node in the list from head to tail*/
 	void traverse(); 
+
+	
+
+private: 
+	/*A little "helper" method for "insertAfter" - HIDE it from the client (main.cpp) to avoid overkill with detail*/
+	Node* getAddress(const std::string& info);
 };
 
 /*No leaks - because composed of SmartNode (smart pointers)*/
