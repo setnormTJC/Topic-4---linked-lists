@@ -11,27 +11,28 @@ LeakyLinkedList::LeakyLinkedList(const std::string valueInitiallyInTheHeadNode)
 	pHead->pNext = nullptr; 
 }
 
-void LeakyLinkedList::insert(const std::string& valueToInsert)
+void LeakyLinkedList::insertAfter(const std::string& newValue, const std::string& valueToInsertAfter)
 {
-	//to be filled in later 
-}
+	//first, allocate space for the node we are inserting 
+	Node* pNew = new Node(newValue, nullptr);
 
-void LeakyLinkedList::pushBack(const std::string& valueToInsertAtBack)
-{
-	Node* pNew = new Node(valueToInsertAtBack, nullptr);
-
+	//now find the memory address of the node containing `valueToInsertAfter`
 	Node* pCurrent = pHead; 
 
-	while (pCurrent->pNext != nullptr)
+	while (pCurrent->pNext->info != valueToInsertAfter)
 	{
-		pCurrent = pCurrent->pNext; 
+		pCurrent = pCurrent->pNext;
 	}
+	
+	pNew->pNext = pCurrent->pNext; //there's a fair bit to "unpack" here!
+	pCurrent->pNext = pNew;
 
-	pCurrent = pNew; //... peters out 
 
-	//NOPE! This ain't it!
+	//What happens if we SWITCH the order of the 2 lines of code above? 
 
 }
+
+
 
 void LeakyLinkedList::pushFront(const std::string& valueToInsertAtFront)
 {
