@@ -73,7 +73,7 @@ class SpaceHogLeakyLinkedList : public LinkedListADT
 	Node* pTail{};
 
 public: 
-	SpaceHogLeakyLinkedList() = default; 
+	SpaceHogLeakyLinkedList() = delete; 
 	SpaceHogLeakyLinkedList(const std::string& valueInitiallyInHead); 
 
 	void insertAfter(const std::string& newValue, const std::string& infoInPreviousNode) override;
