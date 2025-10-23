@@ -25,13 +25,13 @@ void LeakyLinkedList::insertAfter(const std::string& newInfo, const std::string&
 
 	//update pointers appropriately:
 	pNew->pNext = addressOfPreviousNode->pNext; 
+	addressOfPreviousNode->pNext = pNew;  
 
-	addressOfPreviousNode->pNext = pNew; 
 
 	//WHAT happens if we SWITCH the order of the 2 lines of code above? (students may benefit from testing this)
 
-	std::cout << "Did it work?\n";
-	pHead; //no purpose here - just included for "mousing over" in debug mode 
+	//std::cout << "Did it work?\n";
+	//pHead; //no purpose here - just included for "mousing over" in debug mode 
 }
 
 void LeakyLinkedList::removeNode(const std::string& infoToRemove)
@@ -89,6 +89,21 @@ void LeakyLinkedList::traverse()
 
 }
 
+Node* LeakyLinkedList::getPHead()
+{
+	return pHead; 
+}
+
+void LeakyLinkedList::reverseTraverse(Node* pCurrent)
+{
+	if (pCurrent->pNext != nullptr) //"recursive case"
+	{
+		reverseTraverse(pCurrent->pNext); //function calls itself ("recursion")
+	}
+
+	std::cout << pCurrent->info << "\n";	
+}
+
 Node* LeakyLinkedList::getAddress(const std::string& info)
 {
 	Node* pCurrent = pHead; 
@@ -111,4 +126,42 @@ Node* LeakyLinkedList::getAddress(const std::string& info)
 Node::Node(const std::string& info, Node* pNext)
 	:info(info), pNext(pNext)
 {
+}
+
+SpaceHogLeakyLinkedList::SpaceHogLeakyLinkedList(const std::string& valueInitiallyInHead)
+{
+	pHead = new Node(valueInitiallyInHead, nullptr);
+	pTail = pHead;  //so far we only have one node, so it is both first and last
+}
+
+void SpaceHogLeakyLinkedList::insertAfter(const std::string& newValue, const std::string& infoInPreviousNode)
+{
+	//fill this out properly, if you like
+}
+
+void SpaceHogLeakyLinkedList::pushBack(const std::string& newEndValue)
+{
+	Node* pNew = new Node(newEndValue, nullptr); 
+	//update previous tail node's next pointer to point at this new guy: 
+	pTail->pNext = pNew; 
+	pTail = pNew; //pNew is the tail now
+}
+
+void SpaceHogLeakyLinkedList::popFront()
+{
+	//A PROPER approach should verify the list is not empty (pHead != nullptr) first!
+	
+	//briefly: just move pHead forward one step:
+	pHead = pHead->pNext;
+
+	/*NOTE that the non-leaky way is: */
+	//Node* temp = pHead; 
+	//pHead = pHead->pNext; 
+	//delete temp; //deallocates the memory occupied by the previous head (which is no longer in the list)
+	/*Or just use smart pointers to nodes instead of raw pointers*/
+}
+
+std::string SpaceHogLeakyLinkedList::peekFront()
+{
+	return pHead->info;
 }
